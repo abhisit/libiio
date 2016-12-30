@@ -49,7 +49,8 @@ struct iio_buffer * iio_device_create_buffer(const struct iio_device *dev,
 	printf("buffer.c:49 Hi Abhisit\r\n");
 	if (!sample_size || !samples_count)
 	{
-	        printf("buffer.c:52 sample_size != sample_count\r\n");
+	        printf("buffer.c:52 sample_size(%d) and sample_count(%d)\r\n",
+	                        sample_size, samples_count);
 		goto err_set_errno;
 	}
 
