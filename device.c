@@ -429,7 +429,10 @@ ssize_t iio_device_get_sample_size_mask(const struct iio_device *dev,
 	unsigned int i;
 
 	if (words != (dev->nb_channels + 31) / 32)
+	{
+	        printf("device.c:433 words !=...\r\n");
 		return -EINVAL;
+	}
 
 	for (i = 0; i < dev->nb_channels; i++) {
 		const struct iio_channel *chn = dev->channels[i];
