@@ -44,22 +44,23 @@ struct iio_buffer * iio_device_create_buffer(const struct iio_device *dev,
 {
 	int ret = -EINVAL;
 	struct iio_buffer *buf;
+	printf("buffer.c:47 I am here!\r\n");
 	unsigned int sample_size = iio_device_get_sample_size(dev);
 
-	printf("buffer.c:49 Hi Abhisit\r\n");
+	printf("buffer.c:50 Hi Abhisit\r\n");
 	if (!sample_size || !samples_count)
 	{
-	        printf("buffer.c:52 sample_size(%d) and sample_count(%d)\r\n",
+	        printf("buffer.c:53 sample_size(%d) and sample_count(%d)\r\n",
 	                        sample_size, samples_count);
 		goto err_set_errno;
 	}
-
+	printf("buffer.c:57 I am here!\r\n");
 	buf = malloc(sizeof(*buf));
 	if (!buf) {
 		ret = -ENOMEM;
 		goto err_set_errno;
 	}
-
+	printf("buffer.c:63 I am here!\r\n");
 	buf->dev_sample_size = sample_size;
 	buf->length = sample_size * samples_count;
 	buf->dev = dev;
@@ -68,7 +69,7 @@ struct iio_buffer * iio_device_create_buffer(const struct iio_device *dev,
 		ret = -ENOMEM;
 		goto err_free_buf;
 	}
-
+	printf("buffer.c:72 I am here!\r\n");
 	/* Set the default channel mask to the one used by the device.
 	 * While input buffers will erase this as soon as the refill function
 	 * is used, it is useful for output buffers, as it permits
