@@ -439,7 +439,7 @@ ssize_t iio_device_get_sample_size_mask(const struct iio_device *dev,
 		printf("device.c:439 might be on below...\r\n");
 		unsigned int length = chn->format.length / 8 *
 			chn->format.repeat;
-
+		printf("device.c:442 I am on below...\r\n");
 		if (chn->index < 0)
 			break;
 		if (!TEST_BIT(mask, chn->index))
