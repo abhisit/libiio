@@ -434,12 +434,12 @@ ssize_t iio_device_get_sample_size_mask(const struct iio_device *dev,
 		return -EINVAL;
 	}
 
+	printf("device.c:%d nb channels %d\r\n",
+	                __LINE__, dev->nb_channels);
 	for (i = 0; i < dev->nb_channels; i++) {
 		const struct iio_channel *chn = dev->channels[i];
-		printf("device.c:439 might be on below...\r\n");
 		unsigned int length = chn->format.length / 8 *
 			chn->format.repeat;
-		printf("device.c:442 I am on below...\r\n");
 		if (chn->index < 0)
 			break;
 		if (!TEST_BIT(mask, chn->index))
@@ -447,10 +447,14 @@ ssize_t iio_device_get_sample_size_mask(const struct iio_device *dev,
 		if (i > 0 && chn->index == dev->channels[i - 1]->index)
 			continue;
 
+		printf("device.c:%d starting size % length\r\n",
+		                        __LINE__);
 		if (size % length)
 			size += 2 * length - (size % length);
 		else
 			size += length;
+                printf("device.c:%d okay size % length\r\n",
+                                        __LINE__);
 	}
 	return size;
 }
