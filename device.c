@@ -440,6 +440,10 @@ ssize_t iio_device_get_sample_size_mask(const struct iio_device *dev,
 		const struct iio_channel *chn = dev->channels[i];
 		unsigned int length = chn->format.length / 8 *
 			chn->format.repeat;
+
+		printf("device.c:%d length %d repeat %d\r\n", __LINE__,
+		                chn->format.length, chn->format.repeat);
+
 		if (chn->index < 0)
 			break;
 		if (!TEST_BIT(mask, chn->index))
