@@ -447,8 +447,8 @@ ssize_t iio_device_get_sample_size_mask(const struct iio_device *dev,
 		if (i > 0 && chn->index == dev->channels[i - 1]->index)
 			continue;
 
-		printf("device.c:%d starting size mod length, i=%d\r\n",
-		                        __LINE__, i);
+		printf("device.c:%d starting size mod length, i=%d, size=%d and length=%d\r\n",
+		                        __LINE__, i, size, length);
 		if (size % length)
 			size += 2 * length - (size % length);
 		else
